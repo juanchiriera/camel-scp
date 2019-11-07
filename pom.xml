@@ -30,31 +30,10 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jsch</artifactId>
-        <version>${fuse.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jsch-starter</artifactId>
-        <version>${fuse.version}</version>
-        <!-- use the same version as your Camel core version -->
-      </dependency>
-      
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-scp</artifactId>
-        <version>${fuse.version}</version>
-      </dependency>
     </dependencies> 
   </dependencyManagement>
 
   <dependencies>
-
-    <!-- Enabling health checks -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
@@ -73,7 +52,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-undertow</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jsch</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jsch-starter</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spring-boot-starter</artifactId>
@@ -100,7 +86,6 @@
       <artifactId>kubernetes-assertions</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
