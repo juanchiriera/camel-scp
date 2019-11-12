@@ -42,7 +42,7 @@ public class Application extends RouteBuilder {
         from("sftp:10.1.10.212:22/sisaqa/appNomivac?include=.*.txt&username=pruebaocp&password=redhat01&noop=true")
                 .to("file:files");
 
-        from("file:localFiles?include=.*.txt&noop=true")
+        from("file:localFiles?include=.*.txt&noop=true&idempotent=false")
                 .to("sftp:10.1.10.212:22/sisaqa/appNomivac?username=pruebaocp&password=redhat01&noop=true");
         //.setBody().constant("Hello Juanchi")
         //.log(">>> ${body}");
