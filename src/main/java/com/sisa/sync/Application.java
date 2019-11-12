@@ -34,13 +34,17 @@ public class Application extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("file:target/upload?moveFailed=../error")
-            .log("Uploading file ${file:name}")
-            .to("{{scp.client}}")
-            .log("Uploaded file ${file:name} complete.");
+        //from("file:target/upload?moveFailed=../error")
+        //    .log("Uploading file ${file:name}")
+        //    .to("{{scp.client}}")
+        //    .log("Uploaded file ${file:name} complete.");
         
-        //from("timer:appTimer?repeatCount=3").to("scp://10.1.10.212:22/sisaqa")
-        //    .setBody().constant("Hello Juanchi")
-        //    .log(">>> ${body}");
+        from("sftp:10.1.10.212:22/sisaqa/appNomivac?include=.*.txt&username=pruebaocp&password=redhat01&noop=true")
+                .to("file:files");
+
+        from("file:localFiles?include=.*.txt&noop=true")
+                .to("sftp:10.1.10.212:22/sisaqa/appNomivac?username=pruebaocp&password=redhat01&noop=true");
+        //.setBody().constant("Hello Juanchi")
+        //.log(">>> ${body}");
     }
 }
